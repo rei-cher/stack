@@ -76,6 +76,7 @@ int stack_push(stack_t * p_stack, void * p_data)
 
 	new_node->p_data = p_data;
 	new_node->p_next = p_stack->p_head;
+	
 	p_stack->p_head = new_node;
 	p_stack->size++;
 	
@@ -138,7 +139,7 @@ END:
 
 uint64_t stack_n_dump(stack_t * p_stack, uint64_t num)
 {
-	uint64_t dropped = 0;
+	uint64_t dropped = num;
 	uint64_t index = 0;
 	void * p_data = NULL;
 
@@ -147,8 +148,6 @@ uint64_t stack_n_dump(stack_t * p_stack, uint64_t num)
 	{
 		goto END;
 	}
-
-	dropped = num;
 
 	if (p_stack->size < num)
 	{
@@ -180,7 +179,7 @@ void stack_destroy(stack_t ** pp_stack)
 
 	free(*pp_stack);
 	* pp_stack == NULL;
-	*
+	
 END:
 	return;
 }
